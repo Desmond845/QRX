@@ -1,3 +1,14 @@
+# 👨‍💻 About Me - Desmond
+
+[← Back to README.md](README.md) | [📖 User Guide](HOW_TO_USE.md)
+
+---
+
+## 🔗 Quick Links
+- [QRX Main Project](README.md)
+- [Complete User Guide](HOW_TO_USE.md)
+- [Live QRX App](https://desmond845.github.io/QRX/app.html)
+- [My GitHub Profile](https://github.com/desmond845)
 # Hey, I'm Desmond 👋
 
 ## 🎯 Who Am I?
