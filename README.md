@@ -47,10 +47,4 @@ QRX is a cutting-edge, neon-themed QR code tool that combines cyberpunk aestheti
 3. Scan using camera or upload images
 4. Install as PWA for quick access (Android/iOS/Desktop)
 
-### For Developers:
-`bash
-# Clone the repository
-git clone https://github.com/desmond845/QRX.git
 
-# Open in browser (no build required!)
-open index.html
