@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+ 
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WJFQ8DB381"
+    ></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  // Enhanced gtag configuration
+  gtag('config', 'G-WJFQ8DB381', {
+    'app_name': 'QRX',
+    'app_version': '1.0.0',
+    'transport_type': 'beacon', // Better for offline/PWA
+    'send_page_view': false, // We'll handle page views manually
+    'user_properties': {
+      'platform': navigator.platform,
+      'pwa_installed': window.matchMedia('(display-mode: standalone)').matches,
+      'screen_resolution': window.screen.width + 'x' + window.screen.height,
+      'language': navigator.language,
+      'online_status': navigator.onLine ? 'online' : 'offline'
+    },
+    'custom_map': {
+      'dimension1': 'platform',
+      'dimension2': 'pwa_installed',
+      'dimension3': 'screen_resolution'
+    }
+  });
+  
+  // Track initial page view
+  gtag('event', 'page_view', {
+    'page_title': document.title,
+    'page_location': window.location.href,
+    'page_path': window.location.pathname + window.location.hash
+  });
+
+  // Enhanced tracking function with better error handling
+  window.trackQRX = function(eventName, params = {}) {
+    try {
+      gtag('event', eventName, {
+        'event_category': params.category || 'general',
+        'event_label': params.label || '',
+        'value': params.value || 1,
+        'non_interaction': params.non_interaction || false,
+        ...params
+      });
+      
+      // Also log to console in development
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // console.log('[Analytics]', eventName, params);
+      }
+    } catch (error) {
+      // console.warn('[Analytics Error]', error);
+    }
+  };
+
+  // Track app launch immediately
+  document.addEventListener('DOMContentLoaded', function() {
+    const isPWA = window.matchMedia('(display-mode: standalone)').matches;
+    trackQRX('app_launch', {
+      'category': 'app-usage',
+      'label': isPWA ? 'pwa' : 'browser',
+          'value': 1,
+
+      'non_interaction': true
+    });
+    
+    // Track screen view
+    trackQRX('screen_view', {
+      'category': 'app',
+      'label': window.location.hash || 'generate',
+      'non_interaction': true
+    });
+  });
+</script>
+    
+    <script src="qr-code-styling.js"></script>
+    <script src="qr-scanner.umd.min.js"></script>
+    <script src="jsQR.min.js"></script>
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+    <link rel="preload" href="style.css" as="style" />
+    <link rel="stylesheet" href="style.css"/>
+
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+  <meta name="google-site-verification" content="jZUs_hxj2fw_o0OvJedz0MaOTvUk5OY2ZSez7es_0PI" />
+<meta name="msvalidate.01" content="78E831C6FDBEAFF399565310E9FA3746" />
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+ -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>QRX — Neon Cyberpunk QR Code Generator & Scanner</title>
+    <meta name="description" content="Generate, scan, decode QR codes in milli-seconds with cyberpunk style. Live camera scanning, image upload, instant downloads. Free, private, no ads.">
+    <meta name="keywords" content="QR code generator, QR scanner, cyberpunk QR, live scan, image decode, free QR tool, privacy-focused QR, QRX, QRX Scanner, scan QR from image">
+    <meta name="author" content="Desmond — DaxTech.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="QRX — Neon Cyberpunk QR Generator & Scanner">
+<meta property="og:description" content="Create stunning QR codes with live scanning. No registration, 100% free, works offline.">
+<!-- REPLACE with your actual image URL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://desmond845.github.io/QRX/">
+    <meta property="og:image" content="https://desmond845.github.io/QRX/qrx-logo.png">
+    <meta property="og:site_name" content="QRX — QR Tools" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QRX — QR Tools">
+<meta name="twitter:description" content="Cyberpunk-style QR generator & scanner. Free, privacy-focused.">
+<!-- <meta name="twitter:image" content="https://qrx.yourdomain.com/twitter-preview.png"> -->
+
+
+<!-- Canonical URL (important!) -->
+<link rel="canonical" href="https://desmond845.github.io/QRX/">
+        <meta name="msapplication-TileColor" content="#00f0ff" />
+
+    <!-- Favicon -->
+         <link rel="icon" type="image/png" href="qrx-logo.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="qrx.logo.png" />
+    <link rel="icon" sizes="192x192" href="icon-192.png" />
+    <link rel="icon" sizes="512x512" href="icon-512.png" />
+
+    <meta name="application-name" content="QRX — QR Tools" />
+    <!-- <meta name="mobile-web-app-capable" content="yes"> -->
+<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+<!-- <meta name="apple-mobile-web-app-title" content="QRX QR Tools"> -->
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#00f0ff" media="(prefers-color-scheme: light)">
+
+<!-- SEO Meta -->
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="Desmond - DaxTech">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QRX QR Tools",
+          "slogan": "Built by a 15yo who codes while the world sleeps - Live for Code, Code for Life ",
+        "brand": "DaxTech",
+        "img":  "https://desmond845.github.io/QRX/qrx-logo.png",
+        "logo":  "https://desmond845.github.io/QRX/qrx-logo.png",
+        "url": "https://desmond845.github.io/QRX/",
+
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "description": "Cyberpunk-style QR code generator and scanner with live camera, image upload, and instant download",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1573"
+  },
+  "featureList": [
+    "QR Code Generation",
+    "Live Camera Scanning", 
+    "Image Upload Decoding",
+    "Instant PNG Downloads",
+    "Cyberpunk Themes",
+    "Privacy-Focused"
+  ],
+  
+  "author": {
+    "@type": "Person",
+    "name": "Desmond",
+    "url": "https://github.com/desmond845"
+  }
+}
+</script>
+  </head>
+  <body>
+    <h1>QRX</h1>
+    <!-- <div class="content-wrapper" id="wrapper"> -->
+    <!-- <div class="pages" id="pages"> -->
+    <section id="generateSection" class="section">
+      <input type="text" id="input" placeholder="Type anything..." autofocus />
+      <div id="qr"></div>
+      <input
+        style="display: none"
+        type="file"
+        id="logo"
+        accept="image/*"
+        style="margin: 1rem"
+      />
+      <label for="logo" class="btn">Upload logo</label>
+      <!-- Put this right under the logo input -->
+      <button
+        id="removeLogo"
+        class="btn"
+        style="background: #ff3366; margin: 1rem"
+      >
+        Remove Logo
+      </button>
+      <button class="btn" onclick="download()">📥 Download PNG</button>
+      <button class="btn" style="display: none" onclick="copy()">
+        📋 Copy to Clipboard
+      </button>
+    </section>
+
+    <section class="section" id="cameraSection">
+      <!-- <h1>QR GHOST SCANNER</h1> -->
+      <p>Point camera to scan</p>
+
+      <div class="video-container">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvasCam" class="canvas-cam"></canvas>
+      </div>
+      <button class="btn" onclick="retryCamScan()">Scan Again</button>
+
+      <br />
+      <!-- <label for="upload" class="btn"><button id="uploadBtn">Decode from Image</button></label> -->
+      <!-- <input type="file" id="qrImage" accept="image/*" style="display:none;"> -->
+
+      <div id="outputCam" class="status-text-bottom">Scanning...</div>
+      <!-- Add this near your camera output message -->
+<div id="cameraHelp" style="display:none; margin-top: 20px;">
+  <button class="btn" onclick="showCameraPermissionsGuide()" 
+          style="background: linear-gradient(135deg, #ff9966, #ff3366);">
+    🔧 Fix Camera Access
+  </button>
+</div>
+    </section>
+    <section class="section" id="imageSection">
+      <p class="instructions">Drop QR image here or click to upload</p>
+
+      <div class="drop-zone" id="dropZone">
+        <img id="preview" alt="Preview" />
+        <canvas id="canvasImg"></canvas>
+        <div id="successOverlay" class="status-overlay">
+          <p
+            id="text"
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 1.5rem;
+              pointer-events: none;
+            "
+            class="status-text"
+          >
+            DROP IMAGE HERE/TAP TO BROWSE FILES
+          </p>
+        </div>
+      </div>
+
+      <div id="outputImg" class="status-text-bottom">Waiting for image...</div>
+      <!-- Your image upload decoder here -->
+    </section>
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <div class="bottom-nav">
+      <div class="nav-item active" data-index="generate">
+        <div style="position: relative">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 46 46"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="2"
+              y="2"
+              width="14"
+              height="14"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <rect
+              x="30"
+              y="2"
+              width="14"
+              height="14"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <rect
+              x="2"
+              y="30"
+              width="14"
+              height="14"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <rect
+              x="30"
+              y="30"
+              width="14"
+              height="14"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+          </svg>
+        </div>
+        Generate QR
+      </div>
+      <div class="nav-item" data-index="camera">
+        <div style="position: relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+            />
+            <circle cx="12" cy="13" r="3" />
+          </svg>
+        </div>
+        Scan Cam
+      </div>
+      <div class="nav-item" data-index="image">
+        <div style="position: relative">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 4h5v2H6v3H4z"></path>
+            <path d="M20 4h-5v2h3v3h2z"></path>
+            <path d="M4 20h5v-2H6v-3H4z"></path>
+            <path d="M20 20h-5v-2h3v-3h2z"></path>
+            <!-- <line x1="8" y1="12" x2="16" y2="12"></line> -->
+            <circle cx="12" cy="12" r="1.5"></circle>
+          </svg>
+        </div>
+        Scan Img
+      </div>
+      <!-- Add more if you want -->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
