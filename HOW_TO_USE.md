@@ -1,7 +1,6 @@
 # 🎮 QRX — Complete User Guide
-# 🎮 Complete Guide to QRX
 
-[← Back to README.md](../README.md) | [👨‍💻 About Developer](ABOUT.md)
+[← Back to README.md](README.md) | [👨‍💻 About Developer](ABOUT.md)
 
 ---
 
