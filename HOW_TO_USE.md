@@ -5,7 +5,7 @@
 
 ---
 
-*Quick Navigation: [README](../README.md) • [User Guide](#) • [About Developer](ABOUT.md)*
+*Quick Navigation: [README](README.md) • [User Guide](#) • [About Developer](ABOUT.md)*
 Fast • Beautiful • Private QR Tool  
 Built with cyberpunk style by a 15-year-old developer from Nigeria.
 
