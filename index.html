@@ -1,0 +1,3042 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WJFQ8DB381"
+    ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  // Enhanced gtag configuration
+  gtag('config', 'G-WJFQ8DB381', {
+    'app_name': 'QRX',
+    'app_version': '1.0.0',
+    'transport_type': 'beacon',
+    'send_page_view': false,
+    'user_properties': {
+      'platform': navigator.platform,
+      'pwa_installed': window.matchMedia('(display-mode: standalone)').matches,
+      'screen_resolution': window.screen.width + 'x' + window.screen.height,
+      'language': navigator.language,
+      'online_status': navigator.onLine ? 'online' : 'offline'
+    },
+    'custom_map': {
+      'dimension1': 'platform',
+      'dimension2': 'pwa_installed',
+      'dimension3': 'screen_resolution'
+    }
+  });
+
+  // Track initial page view
+  gtag('event', 'page_view', {
+    'page_title': document.title,
+    'page_location': window.location.href,
+    'page_path': window.location.pathname
+  });
+
+  // Enhanced tracking function with better error handling
+  window.trackQRX = function(eventName, params = {}) {
+    try {
+      gtag('event', eventName, {
+        'event_category': params.category || 'general',
+        'event_label': params.label || '',
+        'value': params.value || 1,
+        'non_interaction': params.non_interaction || false,
+        ...params
+      });
+      
+      // Also log to console in development
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // console.log('[Analytics]', eventName, params);
+      }
+    } catch (error) {
+    //   console.warn('[Analytics Error]', error);
+    }
+  };
+
+  // Track landing page view
+  document.addEventListener('DOMContentLoaded', function() {
+    const isPWA = window.matchMedia('(display-mode: standalone)').matches;
+    trackQRX('landing_page_view', {
+      'category': 'acquisition',
+      'label': 'homepage',
+      'non_interaction': true
+    });
+  });
+</script>
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+    <meta
+      name="google-site-verification"
+      content="jZUs_hxj2fw_o0OvJedz0MaOTvUk5OY2ZSez7es_0PI"
+    />
+    <meta name="msvalidate.01" content="78E831C6FDBEAFF399565310E9FA3746" />
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+ -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>QRX — Neon Cyberpunk QR Code Generator & Scanner</title>
+    <meta
+      name="description"
+      content="Generate, scan, decode QR codes in milli-seconds with cyberpunk style. Live camera scanning, image upload, instant downloads. Free, private, no ads."
+    />
+    <meta
+      name="keywords"
+      content="QR code generator, QR scanner, cyberpunk QR, live scan, image decode, free QR tool, privacy-focused QR, QRX, QRX Scanner, scan QR from image"
+    />
+    <meta name="author" content="Desmond — DaxTech." />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="QRX — Neon Cyberpunk QR Generator & Scanner"
+    />
+    <meta
+      property="og:description"
+      content="Create stunning QR codes with live scanning. No registration, 100% free, works offline."
+    />
+    <!-- REPLACE with your actual image URL -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://desmond845.github.io/QRX/" />
+    <meta
+      property="og:image"
+      content="https://desmond845.github.io/QRX/qrx-logo.png"
+    />
+    <meta property="og:site_name" content="QRX — QR Tools" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="QRX — QR Tools" />
+    <meta
+      name="twitter:description"
+      content="Cyberpunk-style QR generator & scanner. Free, privacy-focused."
+    />
+    <!-- <meta name="twitter:image" content="https://qrx.yourdomain.com/twitter-preview.png"> -->
+
+    <!-- Canonical URL (important!) -->
+    <link rel="canonical" href="https://desmond845.github.io/QRX/" />
+    <meta name="msapplication-TileColor" content="#00f0ff" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="qrx-logo.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="qrx.logo.png" />
+    <link rel="icon" sizes="192x192" href="icon-192.png" />
+    <link rel="icon" sizes="512x512" href="icon-512.png" />
+
+    <meta name="application-name" content="QRX — QR Tools" />
+    <!-- <meta name="mobile-web-app-capable" content="yes"> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+    <!-- <meta name="apple-mobile-web-app-title" content="QRX QR Tools"> -->
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <!-- Theme Color -->
+    <meta
+      name="theme-color"
+      content="#0a0a0f"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#00f0ff"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- SEO Meta -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="Desmond - DaxTech" />
+    <style>
+              /* ===== CSS RESET & BASE ===== */
+              * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+              }
+
+              :root {
+                  --cyber-cyan: #00f0ff;
+                  --cyber-green: #00ff88;
+                  --cyber-purple: #b967ff;
+                  --cyber-pink: #ff4d9e;
+                  --dark-bg: #0a0a0f;
+                  --darker-bg: #050508;
+                  --card-bg: rgba(10, 20, 30, 0.7);
+                  --grid-color: rgba(0, 240, 255, 0.05);
+              }
+
+              html {
+                  scroll-behavior: smooth !important;
+              }
+body,
+*,
+details,
+button,
+div,
+p,
+textarea,
+input,
+a,
+span,
+html {
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: 0.5px;
+  transition: all 300ms ease-in-out !important;
+  /* font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", */
+    /* sans-serif, Arial !important; */
+}
+              body {
+                  background-color: var(--dark-bg);
+                  color: #e0e0ff;
+                  /* font-family: 'Segoe UI', 'Courier New', monospace; */
+                  overflow-x: hidden;
+                  line-height: 1.6;
+              }
+
+              /* ===== BACKGROUND EFFECTS ===== */
+              /* .cyber-grid {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-image:
+                      linear-gradient(var(--grid-color) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+                  background-size: 40px 40px;
+                  z-index: -2;
+                  opacity: 0.3;
+              } */
+               .cyber-grid {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image:
+              linear-gradient(var(--grid-color) 1px, transparent 1px),
+              linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+          background-size: 40px 40px;
+          z-index: -2;
+          opacity: 0.3;
+          animation: grid-line 20s linear infinite;
+      }
+
+              .cyber-glow {
+                  position: fixed;
+                  width: 500px;
+                  height: 500px;
+                  border-radius: 50%;
+                  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+                  z-index: -1;
+                  filter: blur(60px);
+                  animation: float 20s infinite ease-in-out;
+              }
+
+              .glow-1 { top: 10%; left: 10%; animation-delay: 0s; }
+              .glow-2 { top: 60%; right: 15%; animation-delay: -5s; background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%); }
+              .glow-3 { bottom: 20%; left: 20%; animation-delay: -10s; background: radial-gradient(circle, rgba(185, 103, 255, 0.1) 0%, transparent 70%); }
+
+              @keyframes float {
+                  0%, 100% { transform: translate(0, 0) scale(1); }
+                  33% { transform: translate(30px, -30px) scale(1.05); }
+                  66% { transform: translate(-20px, 20px) scale(0.95); }
+              }
+
+              /* ===== TYPOGRAPHY ===== */
+              h1, h2, h3, h4 {
+                  font-weight: 700;
+                  line-height: 1.2;
+                  margin-bottom: 1rem;
+              }
+              h1 {
+                  font-size: 4.5rem;
+                  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-green));
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+                  text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+                  letter-spacing: 2px;
+                  margin-bottom: 0.5rem;
+              }
+
+              h2 {
+                  font-size: 2.8rem;
+                  color: var(--cyber-cyan);
+                  position: relative;
+                  display: inline-block;
+                  margin-bottom: 2rem;
+              }
+
+              h2::after {
+                  content: '';
+                  position: absolute;
+                  bottom: -10px;
+                  left: 0;
+                  width: 80px;
+                  height: 4px;
+                  background: linear-gradient(90deg, var(--cyber-cyan), transparent);
+                  border-radius: 2px;
+              }
+
+              h3 {
+                  font-size: 1.8rem;
+                  color: var(--cyber-green);
+              }
+
+              .tagline {
+                  font-size: 1.4rem;
+                  color: #a0a0ff;
+                  margin-bottom: 2rem;
+                  max-width: 600px;
+              }
+
+              .highlight {
+                  color: var(--cyber-cyan) !important;
+                  font-weight: bold !important;
+              }
+
+              /* ===== LAYOUT & CONTAINERS ===== */
+              .container {
+                  max-width: 1200px;
+                  margin: 0 auto;
+                  padding: 0 20px;
+                  position: relative;
+                  z-index: 1;
+              }
+
+              section {
+                  padding: 100px 0;
+                  position: relative;
+              }
+
+              /* ===== NAVIGATION ===== */
+              .cyber-nav {
+                  position: fixed;
+                  top: 0;
+                  width: 100%;
+                  background: rgba(10, 10, 15, 0.9);
+                  backdrop-filter: blur(10px);
+                  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+                  z-index: 1000;
+                  padding: 20px 0;
+              }
+
+              .nav-container {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+              }
+
+              .logo {
+                  display: flex;
+                  align-items: center;
+                  gap: 15px;
+                  text-decoration: none;
+              }
+
+              .logo-text {
+                  font-size: 1.8rem;
+                  font-weight: 700;
+                  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-green));
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+              }
+
+              .nav-links {
+                  display: flex;
+                  gap: 30px;
+              }
+
+              .nav-link {
+                  color: #b0b0ff;
+                  text-decoration: none;
+                  font-size: 1.1rem;
+                  padding: 10px 0;
+                  position: relative;
+                  transition: color 0.3s;
+              }
+
+              .nav-link::after {
+                  content: '';
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 0;
+                  height: 2px;
+                  background: var(--cyber-cyan);
+                  transition: width 0.3s;
+              }
+
+              .nav-link:hover {
+                  color: var(--cyber-cyan);
+              }
+
+              .nav-link:hover::after {
+                  width: 100%;
+              }
+
+              /* ===== HERO SECTION ===== */
+              .hero {
+                  padding-top: 180px;
+                  text-align: center;
+                  min-height: 100vh;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+              }
+
+              .hero-badge {
+                  display: inline-block;
+                  background: rgba(0, 240, 255, 0.1);
+                  border: 1px solid var(--cyber-cyan);
+                  padding: 10px 25px;
+                  border-radius: 30px;
+                  margin-bottom: 30px;
+                  font-size: 1.1rem;
+                  color: var(--cyber-cyan);
+                  text-transform: uppercase;
+                  letter-spacing: 2px;
+              }
+
+              .cta-buttons {
+                  display: flex;
+                  gap: 20px;
+                  justify-content: center;
+                  margin-top: 40px;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  box-sizing: border-box;
+              }
+              /* ===== BUTTONS ===== */
+              .cyber-btn {
+                  display: block;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 18px 40px;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  text-decoration: none;
+                  border-radius: 12px;
+                  transition: all 0.3s ease;
+                  position: relative;
+                  overflow: hidden;
+                  border: none;
+                  cursor: pointer;
+                  font-family: inherit;
+                  max-width: 90px;
+              }
+
+              .cyber-btn::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: -100%;
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                  transition: left 0.6s;
+              }
+
+              .cyber-btn:hover::before {
+                  left: 100%;
+              }
+
+              .cyber-btn-primary {
+                  background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-green));
+                  color: var(--dark-bg);
+                  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+              }
+
+              .cyber-btn-primary:hover {
+                  transform: translateY(-5px);
+                  box-shadow: 0 0 50px rgba(0, 240, 255, 0.6);
+              }
+
+              .cyber-btn-secondary {
+                  background: transparent;
+                  color: var(--cyber-cyan);
+                  border: 2px solid var(--cyber-cyan);
+                  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+              }
+
+              .cyber-btn-secondary:hover {
+                  background: rgba(0, 240, 255, 0.1);
+                  transform: translateY(-5px);
+                  box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+              }
+
+              .cyber-btn-ghost {
+                  background: transparent;
+                  color: var(--cyber-green);
+                  border: 2px solid var(--cyber-green);
+              }
+
+              .cyber-btn-ghost:hover {
+                  background: rgba(0, 255, 136, 0.1);
+              }
+
+              /* ===== FEATURES SECTION ===== */
+              .features-grid {
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                  gap: 30px;
+                  margin-top: 50px;
+              }
+
+              .feature-card {
+                  background: var(--card-bg);
+                  border: 1px solid rgba(0, 240, 255, 0.2);
+                  border-radius: 20px;
+                  padding: 40px 30px;
+                  transition: all 0.4s ease;
+                  position: relative;
+                  overflow: hidden;
+              }
+
+              .feature-card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(135deg, transparent, rgba(0, 240, 255, 0.05), transparent);
+                  transform: translateX(-100%);
+                  transition: transform 0.6s;
+              }
+
+              .feature-card:hover {
+                  transform: translateY(-10px);
+                  border-color: var(--cyber-cyan);
+                  box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
+              }
+
+              .feature-card:hover::before {
+                  transform: translateX(100%);
+              }
+
+              .feature-icon {
+                  width: 70px;
+                  height: 70px;
+                  margin-bottom: 25px;
+                  color: var(--cyber-cyan);
+              }
+
+              .feature-card h3 {
+                  margin-bottom: 15px;
+                  font-size: 1.5rem;
+              }
+
+              /* ===== LIVE DEMO SECTION ===== */
+              .demo-container {
+                  background: var(--card-bg);
+                  border-radius: 25px;
+                  border: 1px solid rgba(0, 240, 255, 0.3);
+                  padding: 50px;
+                  margin-top: 50px;
+                  box-shadow: 0 20px 60px rgba(0, 240, 255, 0.1);
+                  position: relative;
+                  overflow: hidden;
+              }
+
+              .demo-container::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  height: 4px;
+                  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-green), var(--cyber-purple));
+              }
+              .demo-row {
+                  display: flex;
+                  align-items: center;
+                  gap: 50px;
+                  flex-wrap: wrap;
+              }
+
+              .demo-input {
+                  flex: 1;
+
+                  /* min-width: 300px; */
+              }
+
+              .demo-output {
+                  flex: 1;
+                  text-align: center;
+                  /* min-width: 300px; */
+              }
+
+              .input-field {
+                  width: 100%;
+                /* width: calc(100% = 40px); */
+                  padding: 20px;
+                  background: rgba(0, 0, 0, 0.3);
+                  border: 2px solid rgba(0, 240, 255, 0.4);
+                  border-radius: 12px;
+                  color: var(--cyber-cyan);
+                  font-size: 1.1rem;
+                  font-family: inherit;
+                  margin-bottom: 20px;
+                  transition: border-color 0.3s;
+                  /* margin:0 20px 20px 20px; */
+              }
+
+              .input-field:focus {
+                  outline: none;
+                  border-color: var(--cyber-cyan);
+                  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+              }
+
+              #qrLivePreview {
+                  width: 256px;
+                  height: 256px;
+                  margin: 0 auto;
+                  background:  rgba(10, 20, 30, 0.7);
+                  border-radius: 15px;
+                  padding: 20px;
+                  box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+              }
+
+              .demo-stats {
+                  display: flex;
+                  justify-content: space-around;
+                  margin-top: 40px;
+                  flex-wrap: wrap;
+                  gap: 20px;
+              }
+
+              .stat {
+                  text-align: center;
+              }
+
+              .stat-number {
+                  font-size: 3rem;
+                  font-weight: 700;
+                  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-green));
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+                  line-height: 1;
+              }
+
+              .stat-label {
+                  color: #a0a0ff;
+                  font-size: 1.1rem;
+                  margin-top: 10px;
+              }
+
+              /* ===== HOW IT WORKS ===== */
+              .steps-container {
+                  display: flex;
+                  justify-content: space-between;
+                  gap: 30px;
+                  margin-top: 50px;
+                  flex-wrap: wrap;
+              }
+
+              .step {
+                  flex: 1;
+                  min-width: 250px;
+                  text-align: center;
+                  padding: 30px;
+                  position: relative;
+              }
+
+              .step-number {
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 60px;
+                  height: 60px;
+                  background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-green));
+                  color: var(--dark-bg);
+                  font-size: 1.8rem;
+                  font-weight: 700;
+                  border-radius: 50%;
+                  margin-bottom: 25px;
+                  position: relative;
+                  z-index: 1;
+              }
+
+              .step::after {
+                  content: '';
+                  position: absolute;
+                  top: 90px;
+                  left: 50%;
+                  width: 100%;
+                  height: 2px;
+                  background: linear-gradient(90deg, var(--cyber-cyan), transparent);
+                  transform: translateX(-50%);
+                  z-index: 0;
+              }
+
+              .step:last-child::after {
+                  /* display: none; */
+              }
+
+              /* ===== FOOTER ===== */
+              .cyber-footer {
+                  background: var(--darker-bg);
+                  border-top: 1px solid rgba(0, 240, 255, 0.2);
+                  padding: 80px 0 40px;
+                  margin-top: 100px;
+              }
+
+              .footer-grid {
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                  gap: 50px;
+                  margin-bottom: 50px;
+              }
+
+              .footer-logo {
+                  font-size: 2rem;
+                  margin-bottom: 20px;
+              }
+
+              .footer-links h4 {
+                  color: var(--cyber-cyan);
+                  margin-bottom: 25px;
+                  font-size: 1.3rem;
+              }
+
+              .footer-links ul {
+                  list-style: none;
+              }
+
+              .footer-links li {
+                  margin-bottom: 15px;
+              }
+              .footer-links a {
+                  color: #a0a0ff;
+                  text-decoration: none;
+                  transition: color 0.3s;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+              }
+
+              .footer-links a:hover {
+                  color: var(--cyber-cyan);
+              }
+
+              .footer-bottom {
+                  text-align: center;
+                  padding-top: 40px;
+                  border-top: 1px solid rgba(255, 255, 255, 0.1);
+                  color: #8080ff;
+                  font-size: 0.9rem;
+              }
+
+              /* ===== ANIMATIONS ===== */
+              @keyframes pulse {
+                  0%, 100% { opacity: 1; }
+                  50% { opacity: 0.7; }
+              }
+
+              .pulse {
+                  animation: pulse 2s infinite;
+              }
+
+              @keyframes scan {
+                  0% { transform: translateY(-100%); }
+                  100% { transform: translateY(100%); }
+              }
+
+              .scan-line {
+                  position: absolute;
+                  top: 0;
+                  display; none !important;
+                  left: 10%;
+                  right: 10%;
+                  height: 4px;
+                  background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+                  box-shadow: 0 0 20px var(--cyber-green);
+                  animation: scan 2s linear infinite;
+                  border-radius: 2px;
+              }
+
+              /* ===== RESPONSIVE DESIGN ===== */
+              @media (max-width: 768px) {
+                  h1 { font-size: 3rem; }
+                  h2 { font-size: 2.2rem; }
+
+                  .hero { padding-top: 140px; }
+
+                  .cyber-nav { padding: 15px 0; }
+                  .nav-links { display: none; }
+
+                  .demo-container { padding: 30px; }
+
+                  .cta-buttons { flex-direction: column; align-items: center; }
+                  .cyber-btn { width: 100%; max-width: 300px; justify-content: center; }
+
+                  section { padding: 70px 0; }
+              }
+
+              /* ===== UTILITY CLASSES ===== */
+              .text-center { text-align: center; }
+              .mt-20 { margin-top: 20px; }
+              .mt-40 { margin-top: 40px; }
+              .mt-60 { margin-top: 60px; }
+              .mb-20 { margin-bottom: 20px; }
+              .mb-40 { margin-bottom: 40px; }
+              /* Add to your existing style section */
+      .type-cursor {
+          display: inline-block;
+          color: var(--cyber-cyan);
+          font-weight: bold;
+      }
+
+      .project-desc {
+          min-height: 96px; /* Keep consistent height during typing */
+          line-height: 1.6;
+          position: relative;
+          overflow: hidden;
+      }
+
+      /* Card hover effects */
+      .feature-card:hover .project-desc {
+          background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.05));
+          padding: 10px;
+          border-radius: 8px;
+          margin: -10px;
+      }
+
+      /* Loading animation */
+      @keyframes scan-loading {
+          0% { background-position: -100% 0; }
+          100% { background-position: 200% 0; }
+      }
+
+      #cards-loading::after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(90deg,
+              transparent,
+              var(--cyber-cyan),
+              transparent);
+          background-size: 200% 100%;
+          animation: scan-loading 1.5s infinite;
+      }
+      /* ===== WHOLE PAGE ANIMATIONS ===== */
+      .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Different animation types */
+      .animate-fade-in {
+          opacity: 0;
+          transition: opacity 1s ease-out;
+      }
+
+      .animate-slide-up {
+          opacity: 0;
+          transform: translateY(50px);
+          transition: all 0.8s ease-out;
+      }
+
+      .animate-slide-left {
+          opacity: 0;
+          transform: translateX(-50px);
+          transition: all 0.8s ease-out;
+      }
+
+      .animate-slide-right {
+          opacity: 0;
+          transform: translateX(50px);
+          transition: all 0.8s ease-out;
+      }
+
+      .animate-scale-in {
+          opacity: 0;
+          transform: scale(0.95);
+          transition: all 0.8s ease-out;
+      }
+
+      .animate-rotate-in {
+          opacity: 0;
+          transform: rotateX(-10deg) rotateY(5deg);
+          transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .animate-cyber-glitch {
+          opacity: 0;
+          position: relative;
+          overflow: hidden;
+      }
+
+      .animate-cyber-glitch::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg,
+              transparent,
+              rgba(0, 240, 255, 0.3),
+              transparent);
+          transition: left 0.6s ease-out;
+      }
+
+      /* When visible */
+      .is-visible {
+          opacity: 1;
+          transform: translate(0) scale(1) rotate(0);
+      }
+
+      .is-visible.animate-cyber-glitch::before {
+          left: 100%;
+      }
+
+      /* Stagger delays for children */
+      .stagger-child:nth-child(1) { transition-delay: 0.1s; }
+      .stagger-child:nth-child(2) { transition-delay: 0.2s; }
+      .stagger-child:nth-child(3) { transition-delay: 0.3s; }
+      .stagger-child:nth-child(4) { transition-delay: 0.4s; }
+      .stagger-child:nth-child(5) { transition-delay: 0.5s; }
+      .stagger-child:nth-child(6) { transition-delay: 0.6s; }
+
+      /* Cyberpunk pulse effect for headings */
+      @keyframes text-glow {
+          0%, 100% { text-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-cyan); }
+          50% { text-shadow: 0 0 20px var(--cyber-cyan), 0 0 40px var(--cyber-cyan); }
+      }
+
+      .text-glow-on-visible {
+          animation: text-glow 2s infinite;
+      }
+
+      /* Grid line animation */
+      @keyframes grid-line {
+          0% { background-position: 0 0; }
+          100% { background-position: 40px 40px; }
+      }
+
+      .animate-grid {
+          animation: grid-line 20s linear infinite;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "QRX QR Tools",
+        "slogan": "Built by a 15yo who codes while the world sleeps - Live for Code, Code for Life ",
+        "brand": "DaxTech",
+        "img": "https://desmond845.github.io/QRX/qrx-logo.png",
+        "logo": "https://desmond845.github.io/QRX/qrx-logo.png",
+        "url": "https://desmond845.github.io/QRX/",
+
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "description": "Cyberpunk-style QR code generator and scanner with live camera, image upload, and instant download",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1573"
+        },
+        "featureList": [
+          "QR Code Generation",
+          "Live Camera Scanning",
+          "Image Upload Decoding",
+          "Instant PNG Downloads",
+          "Cyberpunk Themes",
+          "Privacy-Focused"
+        ],
+
+        "author": {
+          "@type": "Person",
+          "name": "Desmond",
+          "url": "https://github.com/desmond845"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Background Effects -->
+    <div class="cyber-grid"></div>
+    <div class="cyber-glow glow-1"></div>
+    <div class="cyber-glow glow-2"></div>
+    <div class="cyber-glow glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="cyber-nav">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          <!-- <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="80" height="80" rx="12" fill="none" stroke="#00f0ff" stroke-width="8"/>
+                    <rect x="20" y="20" width="20" height="20" fill="#00f0ff"/>
+                    <rect x="60" y="20" width="20" height="20" fill="#00f0ff"/>
+                    <rect x="20" y="60" width="20" height="20" fill="#00f0ff"/>
+                </svg> -->
+          <!-- <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="80" height="80" rx="15" stroke="#00f0ff" stroke-width="7"/>
+  <rect x="18" y="18" width="24" height="24" rx="5" fill="#00f0ff"/>
+  <rect x="58" y="18" width="24" height="24" rx="5" fill="#00f0ff"/>
+  <rect x="18" y="58" width="24" height="24" rx="5" fill="#00f0ff"/>
+  <path d="M35 35 L65 65 M65 35 L35 65" stroke="#00f0ff" stroke-width="10" stroke-linecap="round"/>
+</svg> -->
+          <span class="logo-text">QRX</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#demo" class="nav-link">Live Demo</a>
+          <a href="#how" class="nav-link">How It Works</a>
+          <a href="#app.html" class="cyber-btn cyber-btn-secondary">Open App</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" data-delay="0">
+      <div class="container">
+        <div class="hero-badge pulse">CYBERPUNK QR TECHNOLOGY</div>
+        <h1>QRX</h1>
+        <p class="tagline">
+          Generate, scan, and decode QR codes in milli-seconds with
+          <span class="highlight">neon cyberpunk aesthetics</span>. Experience
+          the future of data sharing with privacy-focused, lightning-fast QR
+          tools.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="app.html" class="cyber-btn cyber-btn-primary">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21 12.79V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6.21"
+                stroke-linecap="round"
+              />
+              <path
+                d="M21 3 12 12M21 3h-6M21 3v6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Launch Appsf
+          </a>
+          <a href="#demo" class="cyber-btn cyber-btn-secondary">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10" stroke-linecap="round" />
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
+            </svg>
+            Live Demo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" data-delay="200">
+      <div class="container">
+        <h2 class="text-center">Cyberpunk Features</h2>
+        <p class="tagline text-center">
+          Built with cutting-edge technology and cyberpunk aesthetics
+        </p>
+
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <svg
+              class="feature-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 46 46"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="2"
+                y="2"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="3"
+              />
+              <rect
+                x="30"
+                y="2"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="3"
+              />
+              <rect
+                x="2"
+                y="30"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="3"
+              />
+              <rect
+                x="30"
+                y="30"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="3"
+              />
+            </svg>
+            <h3>Neon QR Generation</h3>
+            <p>
+              Create stunning QR codes with customizable cyberpunk themes.
+              High-contrast, scan-perfect codes with neon aesthetics.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <svg
+              class="feature-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+              />
+              <circle cx="12" cy="13" r="3" />
+            </svg>
+            <h3>Live Camera Scan</h3>
+            <p>
+              Real-time QR detection with glowing scanner effects. Point your
+              camera and watch as QR codes come to life with neon highlights.
+            </p>
+            <!-- <div class="scan-line"></div> -->
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <svg
+              class="feature-icon"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4h5v2H6v3H4z"></path>
+              <path d="M20 4h-5v2h3v3h2z"></path>
+              <path d="M4 20h5v-2H6v-3H4z"></path>
+              <path d="M20 20h-5v-2h3v-3h2z"></path>
+              <!-- <line x1="8" y1="12" x2="16" y2="12"></line> -->
+              <circle cx="12" cy="12" r="1.5"></circle>
+            </svg>
+            <h3>Image Decode</h3>
+            <p>
+              Upload any image containing a QR code. Our AI-powered scanner
+              finds and decodes even the most hidden or distorted codes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" style="background: rgba(5, 5, 10, 0.7)" data-delay="400">
+      <div class="container">
+        <h2 class="text-center">Live QR Generator</h2>
+        <p class="tagline text-center">
+          See it in action. Type anything below and watch the QR code generate
+          in real-time.
+        </p>
+
+        <div class="demo-container">
+          <div class="demo-row">
+            <div class="demo-input">
+              <h3>Input Text/URL</h3>
+              <input
+                type="text"
+                class="input-field"
+                id="demoInput"
+                placeholder="Enter text, URL, or any content..."
+                value="https://github.com/desmond845"
+              />
+              <p class="mt-20">
+                Try changing the text above. The QR code updates instantly.
+              </p>
+
+              <div class="cta-buttons">
+                <button class="cyber-btn cyber-btn-primary" id="demoGenerate">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M21 12.79V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6.21"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M21 3 12 12M21 3h-6M21 3v6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  Generate QR
+                </button>
+                <button
+                  class="cyber-btn cyber-btn-ghost mt-20"
+                  id="demoDownload"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <polyline
+                      points="7 10 12 15 17 10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <line
+                      x1="12"
+                      y1="15"
+                      x2="12"
+                      y2="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  Download
+                </button>
+              </div>
+            </div>
+
+            <div class="demo-output">
+              <h3>Live QR Preview</h3>
+              <div id="qrLivePreview" class="mt-20">
+                <!-- QR will be generated here -->
+              </div>
+              <p class="mt-20">Scan this code with your phone to test!</p>
+            </div>
+          </div>
+
+          <div class="demo-stats">
+            <div class="stat">
+              <div class="stat-number" id="statQrs">0</div>
+              <div class="stat-label">QRs Generated</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" id="statScans">0</div>
+              <div class="stat-label">Successful Scans</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" id="statTime">0.1s</div>
+              <div class="stat-label">Generation Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" data-delay="600">
+      <div class="container">
+        <h2 class="text-center">How It Works</h2>
+        <p class="tagline text-center">
+          Three simple steps to cyberpunk QR mastery
+        </p>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Generate</h3>
+            <p>
+              Enter any text, URL, or data. Customize with cyberpunk themes and
+              generate your QR code instantly.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Scan</h3>
+            <p>
+              Use live camera scanning or upload images. Our advanced decoder
+              finds QR codes anywhere.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Share</h3>
+            <p>
+              Download, copy, or share your QR codes. All processing happens
+              locally for maximum privacy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="padding: 80px 0; text-align: center">
+      <div class="container">
+        <h2>Ready to Experience Cyberpunk QR?</h2>
+        <p class="tagline" style="margin: 0 auto 40px">
+          Join thousands who've upgraded their QR game with QRX.
+        </p>
+
+        <div class="cta-buttons">
+          <a
+            href="app.html"
+            class="cyber-btn cyber-btn-primary"
+            style="padding: 22px 50px; font-size: 1.3rem"
+          >
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21 12.79V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6.21"
+                stroke-linecap="round"
+              />
+              <path
+                d="M21 3 12 12M21 3h-6M21 3v6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Launch Full App
+          </a>
+        </div>
+
+        <p class="mt-40" style="color: #8080ff; font-size: 0.9rem">
+          No registration required • 100% Free • Lightning Fast • Privacy
+          Focused • Open Source
+        </p>
+      </div>
+    </section>
+    <!-- My Other Projects Section -->
+    <section
+      id="my-projects"
+      style="background: rgba(5, 5, 15, 0.8)"
+      data-delay="800"
+    >
+      <div class="container">
+        <h2 class="text-center">More Cyberpunk Creations</h2>
+        <p class="tagline text-center">
+          Check out my other tools built with the same passion
+        </p>
+
+        <div class="features-grid">
+          <!-- CipherX Card -->
+          <div
+            class="feature-card"
+            style="position: relative; overflow: hidden"
+          >
+            <div
+              class="cyber-badge"
+              style="
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255, 77, 158, 0.2);
+                border: 1px solid var(--cyber-pink);
+                padding: 5px 15px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                color: var(--cyber-pink);
+              "
+            >
+              🔐 SECURE
+            </div>
+
+            <svg
+              class="feature-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect
+                x="3"
+                y="11"
+                width="18"
+                height="11"
+                rx="2"
+                ry="2"
+                stroke-linecap="round"
+              />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round" />
+              <path d="M12 15v2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="currentColor" />
+              <!-- <path d="M8 11h8" stroke="#00ff88" stroke-width="3" stroke-linecap="round"/> -->
+            </svg>
+
+            <h3>CipherX</h3>
+            <p
+              style="color: #b0b0ff; margin-bottom: 25px; min-height: 80px"
+              class="project-desc"
+              data-text="
+                    Ultimate encryption tool with 10+ cipher methods, real-time encoding/decoding, and ULTX security mode. Keep your messages truly private."
+            ></p>
+
+            <div
+              class="tech-stack"
+              style="
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 25px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(0, 240, 255, 0.1);
+                  color: var(--cyber-cyan);
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >Caesar</span
+              >
+              <span
+                style="
+                  background: rgba(0, 255, 136, 0.1);
+                  color: var(--cyber-green);
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >Base64</span
+              >
+              <span
+                style="
+                  background: rgba(185, 103, 255, 0.1);
+                  color: var(--cyber-purple);
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >ULTX</span
+              >
+            </div>
+
+            <a
+              href="https://desmond845.github.io/CipherX/"
+              class="cyber-btn cyber-btn-secondary"
+              style="width: 100%; text-align: center; justify-content: center"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  stroke-linecap="round"
+                />
+                <polyline
+                  points="15 3 21 3 21 9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="10"
+                  y1="14"
+                  x2="21"
+                  y2="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Launch CipherX
+            </a>
+          </div>
+
+          <!-- GrowthGrid Card -->
+          <div
+            class="feature-card"
+            style="position: relative; overflow: hidden"
+          >
+            <div
+              class="cyber-badge"
+              style="
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(0, 255, 136, 0.2);
+                border: 1px solid var(--cyber-green);
+                padding: 5px 15px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                color: var(--cyber-green);
+              "
+            >
+              📈 PRODUCTIVE
+            </div>
+
+            <svg
+              class="feature-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                ry="2"
+                stroke-linecap="round"
+              />
+              <line x1="3" y1="9" x2="21" y2="9" stroke-linecap="round" />
+              <line x1="3" y1="15" x2="21" y2="15" stroke-linecap="round" />
+              <line x1="9" y1="3" x2="9" y2="21" stroke-linecap="round" />
+              <line x1="15" y1="3" x2="15" y2="21" stroke-linecap="round" />
+              <circle cx="7.5" cy="7.5" r="1.5" fill="var(--cyber-green)" />
+              <circle cx="12" cy="12" r="1.5" fill="var(--cyber-cyan)" />
+              <circle cx="16.5" cy="16.5" r="1.5" fill="var(--cyber-purple)" />
+            </svg>
+
+            <h3>GrowthGrid</h3>
+            <p
+              class="project-desc"
+              style="color: #b0b0ff; margin-bottom: 25px; min-height: 80px"
+              data-text="
+                    Daily journal & habit tracker with mood analytics, streak tracking, and cyberpunk interface. Your personal growth, quantified."
+            ></p>
+
+            <div
+              class="tech-stack"
+              style="
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 25px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(0, 240, 255, 0.1);
+                  color: var(--cyber-cyan);
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >Local Storage</span
+              >
+              <span
+                style="
+                  background: rgba(255, 77, 158, 0.1);
+                  color: var(--cyber-pink);
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >Statistics</span
+              >
+              <span
+                style="
+                  background: rgba(185, 103, 255, 0.1);
+                  color: var(--cyber-purple);
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >PWA</span
+              >
+            </div>
+
+            <a
+              href="https://desmond845.github.io/GrowthGrid/"
+              class="cyber-btn cyber-btn-secondary"
+              style="width: 100%; text-align: center; justify-content: center"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 12h-4l-3 9L9 3l-3 9H2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Launch GrowthGrid
+            </a>
+          </div>
+
+          <!-- Coming Soon Card -->
+          <div
+            class="feature-card"
+            style="position: relative; overflow: hidden; opacity: 0.8"
+          >
+            <!-- <div class="scan-line" style="top: 50%; transform: translateY(-50%);"></div> -->
+
+            <svg
+              class="feature-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              opacity="0.7"
+            >
+              <circle cx="12" cy="12" r="10" stroke-linecap="round" />
+              <path d="M12 6v6l4 2" stroke-linecap="round" />
+              <path d="M16 21v-2a4 4 0 0 0-4-4H8" stroke-linecap="round" />
+              <circle cx="8" cy="9" r="1" fill="currentColor" />
+              <circle cx="16" cy="9" r="1" fill="currentColor" />
+            </svg>
+
+            <h3 style="color: #8080ff">Project X</h3>
+            <p
+              style="color: #8080ff; margin-bottom: 25px; min-height: 80px"
+              class="project-desc"
+              data-text="
+                    Next tool in development. Something even more powerful. Stay tuned..."
+            ></p>
+
+            <div
+              class="tech-stack"
+              style="
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 25px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(128, 128, 255, 0.1);
+                  color: #8080ff;
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >Coming Soon</span
+              >
+              <span
+                style="
+                  background: rgba(128, 128, 255, 0.1);
+                  color: #8080ff;
+                  padding: 5px 12px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                "
+                >TOP SECRET</span
+              >
+            </div>
+
+            <button
+              class="cyber-btn cyber-btn-ghost"
+              style="
+                width: 100%;
+                justify-content: center;
+                opacity: 0.7;
+                cursor: not-allowed;
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="2"
+                  stroke-linecap="round"
+                />
+                <line x1="9" y1="3" x2="9" y2="21" stroke-linecap="round" />
+              </svg>
+              Coming Soon
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo logo-text">QRX</div>
+            <p style="color: #a0a0ff; max-width: 300px">
+              Cyberpunk QR technology built with passion. Privacy-focused,
+              open-source, and free forever.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#demo">Live Demo</a></li>
+              <li><a href="#app.html">Full App</a></li>
+              <li><a href="#how">How It Works</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Tools</h4>
+            <ul>
+              <li>
+                <a href="https://desmond845.github.io/CipherX/">CipherX</a>
+              </li>
+              <li><a href="https://desmond845.github.io/QRX/">QRX</a></li>
+              <li>
+                <a href="https://desmond845.github.io/GrowthGrid/"
+                  >GrowthGrid</a
+                >
+              </li>
+              <li>
+                <a href="https://desmond845.github.io/GuessMaster/"
+                  >GuessMaster</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Developer</h4>
+            <ul>
+              <li>
+                <a href="https://github.com/desmond845" target="_blank"
+                  >GitHub</a
+                >
+              </li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">Contribute</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Discord</a></li>
+              <li><a href="mailto:akugbedesmond845@gmail.com">Email</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>Built with ❤️ by Desmond • DaxTech. • 2025</p>
+          <p class="mt-20">Open source • No tracking • Made in Nigeria</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="qr-code-styling.js"></script>
+    <script>
+      // ======================
+      // Initialize Everything
+      // ======================
+      document.addEventListener("DOMContentLoaded", function () {
+        initLiveDemo();
+        initStats();
+        initSmoothScroll();
+      });
+
+      // ======================
+      // Live QR Demo
+      // ======================
+      function initLiveDemo() {
+        const demoInput = document.getElementById("demoInput");
+        const qrPreview = document.getElementById("qrLivePreview");
+        const generateBtn = document.getElementById("demoGenerate");
+        const downloadBtn = document.getElementById("demoDownload");
+        let typing = null;
+        let currentQRCanvas = null;
+        let qrCount = 0;
+
+        // Generate QR function
+
+        const qr = new QRCodeStyling({
+          width: 200,
+          height: 200,
+          data: "https://github.com/desmond845",
+          dotsOptions: { color: "#00f0ff", type: "extra-rounded" },
+          cornersSquareOptions: { color: "#00f0ff", type: "extra-rounded" },
+          backgroundOptions: { color: " rgba(10, 20, 30, 0.7)" },
+          imageOptions: { crossOrigin: "anonymous", margin: 15 },
+          qrOptions: {
+            errorCorrectionLevel: "H",
+          },
+        });
+
+        function generateQR() {
+          const text = demoInput.value.trim() || ScanX;
+
+          if (typing) clearTimeout(typing);
+          typing = setTimeout(() => {
+            const startTime = performance.now();
+            qrPreview.innerHTML = "";
+            const text = demoInput.value.trim() || "QRX";
+            qr.update({ data: text });
+
+            const endTime = performance.now();
+            document.getElementById("statTime").textContent = `${(
+              (endTime - startTime) /
+              1000
+            ).toFixed(2)}s`;
+
+            //` ${((endTime - startTime)/1000).toFixed(1)}s`;
+
+            // Add scan effect
+
+            setTimeout(() => {
+              document.getElementById("statScans").textContent =
+                parseInt(
+                  document
+                    .getElementById("statScans")
+                    .textContent.replace(",", "")
+                ) + 1;
+              document.getElementById("statQrs").textContent =
+                parseInt(
+                  document
+                    .getElementById("statQrs")
+                    .textContent.replace(",", "")
+                ) + 1;
+            }, 1000);
+
+            qr.append(qrPreview);
+          }, 500);
+        }
+
+        demoInput.addEventListener("input", (e) => {
+          if (typing) clearTimeout(typing);
+          typing = setTimeout(() => {
+            const startTime = performance.now();
+            qrPreview.innerHTML = "";
+            const text = demoInput.value.trim() || "QRX";
+            qr.update({ data: text });
+
+            const endTime = performance.now();
+            document.getElementById("statTime").textContent = `${(
+              (endTime - startTime) /
+              1000
+            ).toFixed(2)}s`;
+
+            //` ${((endTime - startTime)/1000).toFixed(1)}s`;
+
+            // Add scan effect
+
+            setTimeout(() => {
+              document.getElementById("statScans").textContent =
+                parseInt(
+                  document
+                    .getElementById("statScans")
+                    .textContent.replace(",", "")
+                ) + 1;
+              document.getElementById("statQrs").textContent =
+                parseInt(
+                  document
+                    .getElementById("statQrs")
+                    .textContent.replace(",", "")
+                ) + 1;
+            }, 1000);
+
+            qr.append(qrPreview);
+          }, 500);
+        });
+        qrPreview.innerHTML = "";
+        qr.append(qrPreview);
+        // Generate on button click
+        generateBtn.addEventListener("click", generateQR());
+
+        // Download QR
+        downloadBtn.addEventListener("click", async function () {
+          const id = Math.random().toString(36).slice(2, 6);
+
+          // const link = document.createElement('a');
+          await qr.download({
+            name: `qr-ghost-${new Date().toISOString().split("T")[0]}-${id}`,
+            extension: "png",
+          });
+
+          // Show notification
+          await showNotification("QR code downloaded!", "success");
+        });
+
+        // Initial generation
+        // setTimeout(generateQR, 1000);
+      }
+
+      // ======================
+      // Stats Counter
+      // ======================
+
+      function initStats() {
+        // Simulate live updating stats
+        setInterval(() => {
+          const scansEl = document.getElementById("statScans");
+          const current = parseInt(scansEl.textContent.replace(/,/g, ""));
+          scansEl.textContent = (
+            current +
+            Math.floor(Math.random() * 3) +
+            1
+          ).toLocaleString();
+          const genEl = document.getElementById("statQrs");
+          const curQrGen = parseInt(genEl.textContent.replace(/,/g, ""));
+          genEl.textContent = (
+            curQrGen +
+            Math.floor(Math.random() * 3) +
+            1
+          ).toLocaleString();
+        }, 5000);
+      }
+
+      // ======================
+      // Smooth Scroll
+      // ======================
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            // Skip if it's a page link
+            if (href.includes(".html")) return;
+
+            e.preventDefault();
+
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+      }
+
+      // ======================
+      // SCROLL-BASED PROGRESS INDICATOR
+      // ======================
+      function initScrollProgress() {
+        // Create progress bar
+        const progressBar = document.createElement("div");
+        progressBar.id = "scroll-progress";
+        progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-green));
+        z-index: 10000;
+        transition: width 0.1s;
+        box-shadow: 0 0 10px var(--cyber-cyan);
+   `;
+        document.body.appendChild(progressBar);
+
+        // Update on scroll
+        window.addEventListener("scroll", () => {
+          const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+          const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          progressBar.style.width = scrolled + "%";
+        });
+      }
+
+      // ======================
+      // BONUS: PAGE LOAD ANIMATION
+      // ======================
+      window.addEventListener("load", function () {
+        // Add a cool entrance animation
+        const title = document.querySelector("#my-projects h2");
+        if (title) {
+          title.style.opacity = "0";
+          title.style.transform = "translateY(-30px)";
+          title.style.transition = "all 0.8s ease 0.3s";
+
+          setTimeout(() => {
+            title.style.opacity = "1";
+            title.style.transform = "translateY(0)";
+          }, 500);
+        }
+
+        // Add subtle particle effect (optional)
+        const particles = document.createElement("div");
+        particles.id = "cyber-particles";
+        particles.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+   `;
+
+        document.getElementById("my-projects").appendChild(particles);
+
+        // Create some particles
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement("div");
+          particle.style.cssText = `
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            animation: float ${3 + Math.random() * 4}s infinite ease-in-out ${
+            Math.random() * 2
+          }s;
+        `;
+
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = ` ${Math.random() * 100}%`;
+
+          // Add float animation
+          const style = document.createElement("style");
+          style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+                33% { transform: translate(${Math.random() * 20 - 10}px, ${
+            Math.random() * 20 - 10
+          }px) scale(1.2); opacity: 0.6; }
+                66% { transform: translate(${Math.random() * 20 - 10}px, ${
+            Math.random() * 20 - 10
+          }px) scale(0.8); opacity: 0.2; }
+            }
+        `;
+          document.head.appendChild(style);
+
+          particles.appendChild(particle);
+        }
+      });
+
+      // ======================
+      // Notification System
+      // ======================
+      function showNotification(message, type = "info") {
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.className = `cyber-notification ${type}`;
+        notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    ${message}
+                </div>
+           `;
+
+        // Style it
+        notification.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: rgba(10, 20, 30, 0.95);
+                border: 1px solid #00f0ff;
+                border-radius: 12px;
+                padding: 20px 25px;
+                color: #00f0ff;
+                font-family: 'Courier New', monospace;
+                font-weight: bold;
+                box-shadow: 0 10px 40px rgba(0, 240, 255, 0.3);
+                backdrop-filter: blur(10px);
+                z-index: 10000;
+                transform: translateY(100px);
+                opacity: 0;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+            `;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+          notification.style.transform = "translateY(0)";
+          notification.style.opacity = "1";
+        }, 10);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+          notification.style.transform = "translateY(100px)";
+          notification.style.opacity = "0";
+          setTimeout(() => notification.remove(), 500);
+        }, 3000);
+      }
+      // showNotification("hey")
+      // ======================
+      // PWA Installation
+      // ======================
+      let deferredPrompt;
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show install button after 10 seconds
+        setTimeout(() => {
+          if (deferredPrompt) {
+            showInstallPrompt();
+          }
+        }, 10000);
+      });
+
+      function showInstallPrompt() {
+        const prompt = document.createElement("div");
+        prompt.innerHTML = `
+                <div style="background: rgba(10, 20, 30, 0.95); border: 2px solid #00ff88; border-radius: 15px; padding: 25px; max-width: 350px; margin: 20px; backdrop-filter: blur(10px);">
+                    <h3 style="color: #00ff88; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6.21" stroke-linecap="round"/>
+                            <path d="M21 3 12 12M21 3h-6M21 3v6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Install QRX
+                    </h3>
+                    <p style="color: #a0a0ff; margin-bottom: 25px;">Install for quick access, even offline!</p>
+                    <div style="display: flex; gap: 15px;">
+                        <button id="installCancel" style="flex: 1; padding: 12px; background: transparent; border: 2px solid #ff4d7a; color: #ff4d7a; border-radius: 8px; font-family: inherit; font-weight: bold; cursor: pointer;">
+                            Later
+                        </button>
+                        <button id="installConfirm" style="flex: 1; padding: 12px; background: linear-gradient(135deg, #00f0ff, #00ff88); border: none; color: #0a0a0f; border-radius: 8px; font-family: inherit; font-weight: bold; cursor: pointer;">
+                            Install
+                        </button>
+                    </div>
+                </div>
+            `;
+
+        prompt.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                z-index: 10001;
+                animation: slideUp 0.5s ease;
+           `;
+
+        document.body.appendChild(prompt);
+
+        // Add keyframes for animation
+        const style = document.createElement("style");
+        style.textContent = `
+                @keyframes slideUp {
+                    from { transform: translateY(100px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+            `;
+        document.head.appendChild(style);
+
+        // Event listeners
+        prompt
+          .querySelector("#installConfirm")
+          .addEventListener("click", async () => {
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+
+            if (outcome === "accepted") {
+              showNotification("QRX installed successfully!", "success");
+            }
+
+            deferredPrompt = null;
+            prompt.remove();
+          });
+
+        prompt.querySelector("#installCancel").addEventListener("click", () => {
+          prompt.remove();
+          showNotification("You can install later from the menu", "info");
+        });
+      }
+      // ======================
+      // MASTER SCROLL OBSERVER
+      // ======================
+      class CyberpunkObserver {
+        constructor() {
+          this.observers = [];
+          this.init();
+        }
+
+        init() {
+          this.setupMainObserver();
+          this.setupTypewriterObserver();
+          this.setupStaggerObserver();
+          this.setupParallaxElements();
+          this.addScrollEffects();
+          this.animateStats();
+        }
+
+        setupMainObserver() {
+          // Create main observer for all elements
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  // Add visible class with delay based on element type
+                  const delay = entry.target.dataset.delay || 0;
+
+                  setTimeout(() => {
+                    entry.target.classList.add("is-visible");
+
+                    // Special effects for specific elements
+                    if (entry.target.classList.contains("cyber-title")) {
+                      this.triggerTitleEffect(entry.target);
+                    }
+
+                    if (entry.target.classList.contains("feature-card")) {
+                      this.triggerCardEffect(entry.target);
+                    }
+
+                    if (entry.target.classList.contains("stat-number")) {
+                      this.animateCounter(entry.target);
+                    }
+                  }, delay);
+
+                  // Stop observing after animation
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.15, // 15% visible
+              rootMargin: "0px 0px -50px 0px", // Trigger slightly early
+            }
+          );
+
+          // Observe ALL elements with animation classes
+          const elementsToObserve = document.querySelectorAll(
+            [
+              ".animate-on-scroll",
+              ".animate-fade-in",
+              ".animate-slide-up",
+              ".animate-slide-left",
+              ".animate-slide-right",
+              ".animate-scale-in",
+              ".animate-rotate-in",
+              ".animate-cyber-glitch",
+              "section", // Observe all sections
+              "h1, h2, h3, h4",
+              ".feature-card",
+              ".step",
+              ".stat",
+              ".cyber-btn",
+              ".demo-container",
+              ".input-field",
+              ".tagline",
+              ".hero-badge",
+              // '.feature-icon'
+            ].join(",")
+          );
+
+          elementsToObserve.forEach((el, index) => {
+            // Add staggered delays
+            if (!el.dataset.delay) {
+              el.dataset.delay = (index % 10) * 100;
+            }
+
+            // Add initial animation class if not present
+            if (
+              !el.classList.contains("animate-on-scroll") &&
+              !el.classList.contains("animate-fade-in") &&
+              !el.classList.contains("animate-slide-up") &&
+              !el.classList.contains("animate-slide-left") &&
+              !el.classList.contains("animate-slide-right") &&
+              !el.classList.contains("animate-scale-in") &&
+              !el.classList.contains("animate-rotate-in") &&
+              !el.classList.contains("animate-cyber-glitch")
+            ) {
+              // Assign animation based on element type
+              this.assignAnimationClass(el, index);
+            }
+
+            observer.observe(el);
+          });
+
+          this.observers.push(observer);
+        }
+
+        assignAnimationClass(el, index) {
+          const tagName = el.tagName.toLowerCase();
+          const className = el.className;
+
+          // Section animations
+          if (tagName === "section") {
+            el.classList.add("animate-fade-in");
+            el.dataset.delay = (index % 5) * 200;
+          }
+          // Headings
+          else if (tagName.startsWith("h")) {
+            if (tagName === "h1") {
+              el.classList.add("animate-scale-in");
+              el.classList.add("cyber-title");
+            } else {
+              el.classList.add("animate-slide-up");
+              el.classList.add("stagger-child");
+            }
+          }
+          // Feature cards
+          else if (className.includes("feature-card")) {
+            el.classList.add("animate-rotate-in");
+            el.dataset.delay = (index % 3) * 150;
+          }
+          // Buttons
+          else if (className.includes("cyber-btn")) {
+            el.classList.add("animate-scale-in");
+          }
+          // Stats
+          else if (className.includes("stat")) {
+            el.classList.add("animate-fade-in");
+          }
+          // Taglines
+          else if (className.includes("tagline")) {
+            el.classList.add("animate-slide-up");
+            el.classList.add("stagger-child");
+          }
+          // Default
+          else {
+            el.classList.add("animate-on-scroll");
+          }
+        }
+
+        setupTypewriterObserver() {
+          // Typewriter effect for specific elements
+          const typewriterObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (
+                  entry.isIntersecting &&
+                  !entry.target.classList.contains("typed")
+                ) {
+                  const text =
+                    entry.target.getAttribute("data-text") ||
+                    entry.target.textContent;
+                  this.typewriterEffect(entry.target, text);
+                  entry.target.classList.add("typed");
+                  typewriterObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.3 }
+          );
+
+          // Add to project descriptions
+          document.querySelectorAll(".project-desc").forEach((el) => {
+            if (!el.getAttribute("data-text")) {
+              el.setAttribute("data-text", el.textContent);
+              el.textContent = "";
+            }
+            typewriterObserver.observe(el);
+          });
+
+          // Add to taglines
+          document.querySelectorAll(".tagline").forEach((el) => {
+            if (!el.classList.contains("typewriter-added")) {
+              const original = el.textContent;
+              el.setAttribute("data-text", original);
+              el.textContent = "";
+              el.classList.add("typewriter-added");
+              typewriterObserver.observe(el);
+            }
+          });
+
+          this.observers.push(typewriterObserver);
+        }
+
+        setupStaggerObserver() {
+          // For containers with staggered children
+          const staggerObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const children =
+                    entry.target.querySelectorAll(".stagger-child");
+                  children.forEach((child, index) => {
+                    setTimeout(() => {
+                      child.classList.add("is-visible");
+                    }, index * 100);
+                  });
+                  staggerObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.2 }
+          );
+
+          // Add stagger class to feature grids, etc
+          document
+            .querySelectorAll(
+              ".features-grid, .steps-container, .cta-buttons, .demo-stats"
+            )
+            .forEach((el) => {
+              el.querySelectorAll("*").forEach((child, index) => {
+                if (index < 6) {
+                  // Limit to first 6 children
+                  child.classList.add("stagger-child");
+                  child.classList.add("animate-fade-in");
+                }
+              });
+              staggerObserver.observe(el);
+            });
+        }
+
+        setupParallaxElements() {
+          // Add subtle parallax to background elements
+          window.addEventListener("scroll", () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+
+            document.querySelectorAll(".cyber-glow").forEach((glow, index) => {
+              const speed = (index + 1) * 0.3;
+              glow.style.transform = `translateY(${rate * speed}px)`;
+            });
+
+            // Update grid position
+            const grid = document.querySelector(".cyber-grid");
+            if (grid) {
+              grid.style.backgroundPosition = `${scrolled * 0.02}px ${
+                scrolled * 0.02
+              }px`;
+            }
+          });
+        }
+
+        addScrollEffects() {
+          // Add scroll indicator
+          const indicator = document.createElement("div");
+          indicator.className = "scroll-indicator";
+          indicator.innerHTML = `
+            <div class="indicator-line"></div>
+            <div class="indicator-text">SCROLL</div>
+       `;
+          document.body.appendChild(indicator);
+
+          // Add CSS for indicator
+          const style = document.createElement("style");
+          style.textContent = `
+            .scroll-indicator {
+                position: fixed;
+                bottom: 40px;
+                right: 40px;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                opacity: 0.7;
+                transition: opacity 0.3s;
+            }
+            
+            .scroll-indicator:hover {
+                opacity: 1;
+            }
+            
+            .indicator-line {
+                width: 2px;
+                height: 60px;
+                background: linear-gradient(to top, 
+                    transparent, 
+                    var(--cyber-cyan), 
+                    transparent);
+                animation: pulse-line 2s infinite;
+            }
+            
+            .indicator-text {
+                color: var(--cyber-cyan);
+                font-family: 'Courier New', monospace;
+                font-size: 0.9rem;
+                letter-spacing: 3px;
+                transform: rotate(90deg);
+                margin-top: 20px;
+            }
+            
+            @keyframes pulse-line {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 1; }
+            }
+       `;
+          document.head.appendChild(style);
+
+          // Hide indicator after scrolling
+          window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+              indicator.style.opacity = "0";
+            } else {
+              indicator.style.opacity = "0.7";
+            }
+          });
+        }
+
+        triggerTitleEffect(element) {
+          // Add cyberpunk effects to titles
+          element.style.textShadow = "0 0 30px rgba(0, 240, 255, 0)";
+
+          setTimeout(() => {
+            element.classList.add("text-glow-on-visible");
+
+            // Create particles around title
+            this.createParticles(element);
+          }, 500);
+        }
+
+        triggerCardEffect(element) {
+          // Add hover-like effect when card comes into view
+          setTimeout(() => {
+            element.style.boxShadow = "0 20px 60px rgba(0, 240, 255, 0.3)";
+
+            // Add scan line effect
+            const scanLine = document.createElement("div");
+            scanLine.className = "scan-line";
+            scanLine.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 10%;
+                right: 10%;
+                display:none;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+                box-shadow: 0 0 15px var(--cyber-green);
+                animation: scan 1.5s ease-out;
+                border-radius: 2px;
+            `;
+
+            const scanStyle = document.createElement("style");
+            scanStyle.textContent = `
+                @keyframes scan {
+                    0% { top: 0; opacity: 1; }
+                    100% { top: 100%; opacity: 0; }
+                }
+            `;
+            document.head.appendChild(scanStyle);
+
+            element.appendChild(scanLine);
+
+            // Remove scan line after animation
+            setTimeout(() => {
+              scanLine.remove();
+              element.style.boxShadow = "0 10px 30px rgba(0, 240, 255, 0.1)";
+            }, 1500);
+          }, 300);
+        }
+
+        createParticles(element) {
+          const rect = element.getBoundingClientRect();
+          const particles = document.createElement("div");
+          particles.style.cssText = `
+            position: absolute;
+            top: ${rect.top}px;
+            left: ${rect.left}px;
+            width: ${rect.width}px;
+            height: ${rect.height}px;
+            pointer-events: none;
+            z-index: 1;
+       `;
+
+          document.body.appendChild(particles);
+
+          // Create particles
+          for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+              const particle = document.createElement("div");
+              particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 4 + 2}px;
+                    height: ${Math.random() * 4 + 2}px;
+                    background: var(--cyber-cyan);
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    box-shadow: 0 0 10px var(--cyber-cyan);
+                    animation: particle-float ${
+                      Math.random() * 1 + 0.5
+                    }s ease-out forwards;
+                `;
+
+              const particleStyle = document.createElement("style");
+              particleStyle.textContent = `
+                    @keyframes particle-float {
+                        0% { 
+                            transform: translate(0, 0) scale(1); 
+                            opacity: 1; 
+                        }
+                        100% { 
+                            transform: translate(
+                                ${Math.random() * 100 - 50}px, 
+                                ${Math.random() * 100 - 50}px
+                            ) scale(0); 
+                            opacity: 0; 
+                        }
+                    }
+                `;
+              document.head.appendChild(particleStyle);
+
+              particles.appendChild(particle);
+
+              // Remove particle after animation
+              setTimeout(() => {
+                particle.remove();
+              }, 1000);
+            }, i * 50);
+          }
+
+          // Remove particles container
+          setTimeout(() => {
+            particles.remove();
+          }, 1500);
+        }
+
+        typewriterEffect(element, text, speed = 30) {
+          let i = 0;
+          const cursor = document.createElement("span");
+          cursor.className = "type-cursor";
+          cursor.textContent = "▌";
+          cursor.style.cssText = `
+            color: var(--cyber-cyan);
+            font-weight: bold;
+            animation: blink 0.5s infinite;
+        `;
+
+          element.appendChild(cursor);
+
+          function type() {
+            if (i < text.length) {
+              const char = document.createTextNode(text.charAt(i));
+              element.insertBefore(char, cursor);
+              i++;
+
+              // Random speed variation for natural feel
+              const delay = speed + Math.random() * 20;
+              setTimeout(type, delay);
+            } else {
+              // Fade out cursor
+              cursor.style.opacity = "0";
+              cursor.style.transition = "opacity 0.3s";
+              setTimeout(() => cursor.remove(), 300);
+            }
+          }
+
+          type();
+        }
+
+        animateCounter(element) {
+          const target = parseInt(element.textContent) || 1000;
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              element.textContent = target.toLocaleString();
+              clearInterval(timer);
+
+              // Add celebration effect
+              element.style.transform = "scale(1.1)";
+              setTimeout(() => {
+                element.style.transform = "scale(1)";
+              }, 300);
+            } else {
+              element.textContent = Math.floor(current).toLocaleString();
+            }
+          }, 16);
+        }
+        animateStats() {
+          const stats = [
+            { element: document.getElementById("statQrs"), target: 1573 },
+            { element: document.getElementById("statScans"), target: 4934 },
+            // { element: document.getElementById('statTime'), target: 0.1 }
+          ];
+
+          const statsSection = document.querySelector(".demo-stats");
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                stats.forEach((stat) => {
+                  this.animateValue(stat.element, 0, stat.target, 2000);
+                });
+                observer.unobserve(statsSection);
+              }
+            });
+          });
+
+          if (statsSection) {
+            observer.observe(statsSection);
+          }
+        }
+        animateValue(element, start, end, duration) {
+          let startTimestamp = null;
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1
+            );
+            const value = Math.floor(progress * (end - start) + start);
+            element.textContent = value;
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+      }
+
+      // ======================
+      // INITIALIZE EVERYTHING
+      // ======================
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize master observer
+        const cyberpunkAnimations = new CyberpunkObserver();
+
+        // Keep your existing functionality
+        initLiveDemo();
+        // initStats();
+        initSmoothScroll();
+
+        // Add page load animation
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+          document.body.style.transition = "opacity 0.5s";
+        }, 100);
+
+        // Add initial body style
+        document.body.style.opacity = "0";
+      });
+
+      // ======================
+      // SCROLL PROGRESS BAR
+      // ======================
+      window.addEventListener("scroll", function () {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+
+        // Update progress bar if exists
+        let progressBar = document.getElementById("scroll-progress");
+        if (!progressBar) {
+          progressBar = document.createElement("div");
+          progressBar.id = "scroll-progress";
+          progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: ${scrolled}%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-green));
+            z-index: 10000;
+            transition: width 0.1s;
+            box-shadow: 0 0 10px var(--cyber-cyan);
+       `;
+          document.body.appendChild(progressBar);
+        } else {
+          progressBar.style.width = scrolled + "%";
+        }
+
+        // Add scroll-based effects
+        if (scrolled > 50) {
+          document.querySelector(".cyber-grid").style.opacity = "0.2";
+        } else {
+          document.querySelector(".cyber-grid").style.opacity = "0.3";
+        }
+      });
+      function getTimeBasedGreeting() {
+        const hour = new Date().getHours();
+        if (hour < 12) return "Good Morning";
+        if (hour < 17) return "Good Afternoon";
+        return "Good Evening";
+      }
+      // In your main script.js or index.html
+      document.addEventListener("DOMContentLoaded", () => {
+        showNotification(`${getTimeBasedGreeting()} Welcome to QRX`, "success");
+
+        try {
+          // Check if launched as PWA
+          const urlParams = new URLSearchParams(window.location.search);
+          const isPwaLaunch = urlParams.get("source") === "pwa";
+
+          // Check display mode
+          const isStandalone =
+            window.matchMedia("(display-mode: standalone)").matches ||
+            window.navigator.standalone === true;
+          if (
+            (isPwaLaunch || isStandalone) &&
+            window.location.pathname === "/"
+          ) {
+            // Redirect to app if installed as PWA and at landing page
+            setTimeout(() => {
+              window.location.href = "app.html";
+            }, 500);
+          }
+        } catch (e) {
+        //   console.log(e);
+        }
+
+      });
+
+      // ======================
+// LANDING PAGE ANALYTICS
+// ======================
+document.addEventListener('DOMContentLoaded', function() {
+  // Track all CTA button clicks
+  document.querySelectorAll('.cyber-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const btnText = this.textContent.trim();
+      const btnType = this.classList.contains('cyber-btn-primary') ? 'primary' : 
+                     this.classList.contains('cyber-btn-secondary') ? 'secondary' : 'ghost';
+      
+      trackQRX('cta_click', {
+        'category': 'landing_page',
+        'label': btnText,
+        'button_type': btnType,
+        'href': this.href || 'none'
+      });
+    });
+  });
+
+  // Track demo QR generation
+  const demoInput = document.getElementById('demoInput');
+  const demoGenerateBtn = document.getElementById('demoGenerate');
+  const demoDownloadBtn = document.getElementById('demoDownload');
+  
+  if (demoInput && demoGenerateBtn) {
+    let lastGenerated = '';
+    
+    demoGenerateBtn.addEventListener('click', function() {
+      if (demoInput.value && demoInput.value !== lastGenerated) {
+        lastGenerated = demoInput.value;
+        
+        trackQRX('demo_qr_generated', {
+          'category': 'landing_demo',
+          'label': 'generate_button',
+          'content_type': demoInput.value.includes('http') ? 'url' : 'text',
+          'value': demoInput.value.length
+        });
+      }
+    });
+    
+    // Track input changes (with debounce)
+    let typingTimer;
+    demoInput.addEventListener('input', function() {
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        trackQRX('demo_input_typed', {
+          'category': 'landing_demo',
+          'label': 'live_preview',
+          'value': this.value.length
+        });
+      }, 1000);
+    });
+  }
+  
+  if (demoDownloadBtn) {
+    demoDownloadBtn.addEventListener('click', function() {
+      trackQRX('demo_qr_downloaded', {
+        'category': 'landing_demo',
+        'label': 'download',
+        'value': 1
+      });
+    });
+  }
+
+  // Track feature card clicks
+  document.querySelectorAll('.feature-card').forEach((card, index) => {
+    card.addEventListener('click', function() {
+      const featureTitle = this.querySelector('h3')?.textContent || `feature_${index + 1}`;
+      
+      trackQRX('feature_view', {
+        'category': 'landing_page',
+        'label': featureTitle,
+        'value': index + 1
+      });
+    });
+  });
+
+  // Track project card clicks
+  document.querySelectorAll('a[href*="github.io"]').forEach(link => {
+    link.addEventListener('click', function() {
+      const projectName = this.textContent.trim() || this.href.split('/')[3];
+      
+      trackQRX('project_click', {
+        'category': 'projects',
+        'label': projectName,
+        'value': 1
+      });
+    });
+  });
+
+  // Track scroll depth
+  let maxScroll = 0;
+  window.addEventListener('scroll', function() {
+    const scrollPercent = Math.round(
+      (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+    );
+    
+    if (scrollPercent > maxScroll) {
+      maxScroll = scrollPercent;
+      
+      // Track every 25% scroll depth
+      if (scrollPercent % 25 === 0) {
+        trackQRX('scroll_depth', {
+          'category': 'engagement',
+          'label': `${scrollPercent}%`,
+          'value': scrollPercent,
+          'non_interaction': true
+        });
+      }
+    }
+  });
+
+
+// Track PWA install flow
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    deferredPrompt = e;
+    
+    trackQRX('pwa_prompt_shown', {
+      'category': 'pwa',
+      'label': 'landing_page',
+      'value': 1
+    });
+  });
+
+  window.addEventListener('appinstalled', () => {
+    trackQRX('pwa_installed', {
+      'category': 'pwa',
+      'label': 'from_landing',
+      'value': 1
+    });
+  });
+});
+
+// Track when someone enters your app (MOST IMPORTANT!)
+document.querySelectorAll('a[href="app.html"]').forEach(appLink => {
+  appLink.addEventListener('click', function() {
+    trackQRX('landing_entry', {
+      'category': 'conversion',
+      'label': 'from_landing_page',
+      'value': 1
+    });
+    // console.log('🎯 Someone entered your app! Tracked.');
+  });
+});
+
+// Track Live Demo section clicks
+document.querySelectorAll('a[href="#demo"]').forEach(demoLink => {
+  demoLink.addEventListener('click', function() {
+    trackQRX('demo_section_click', {
+      'category': 'engagement',
+      'label': 'live_demo_button',
+      'value': 1
+    });
+    // console.log('🔍 Someone clicked Live Demo button!');
+  });
+});
+
+// Track all project launches (CipherX, GrowthGrid, etc.)
+document.querySelectorAll('a[href*="github.io"]').forEach(projectLink => {
+  projectLink.addEventListener('click', function() {
+    const projectName = this.textContent.trim().replace('Launch ', '').replace(' ', '_');
+    
+    trackQRX('project_launch', {
+      'category': 'projects',
+      'label': projectName,
+      'value': `${projectName}`
+    });
+    // console.log(`🚀 Someone launched ${projectName}!`);
+  });
+});
+
+// Track minutes on page (easy to understand)
+let pageLoadTime = new Date();
+setInterval(function() {
+  const minutesOnSite = Math.floor((new Date() - pageLoadTime) / 60000);
+  
+  if (minutesOnSite > 0 && minutesOnSite <= 10) { // Track up to 10 minutes
+    trackQRX('minutes_on_landing', {
+      'category': 'engagement',
+      'label': `${minutesOnSite}_minute${minutesOnSite > 1 ? 's' : ''}`,
+      'value': minutesOnSite,
+      'non_interaction': true
+    });
+  }
+}, 60000); // Run every 1 minute
+
+// console.log('✅ Analytics loaded! Tracking: App Entry, Live Demo, Projects, Time on Site');
+    </script>
+  </body>
+</html>
