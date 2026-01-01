@@ -3,7 +3,7 @@
 // ===========================================
 
 // CHANGE THIS NUMBER EVERY TIME I UPDATE THE APP
-const APP_VERSION = '1.0.1';
+const APP_VERSION = '1.0.1.1';
 const CACHE_NAME = `qrx-${APP_VERSION}`;
 
 // ========== FILES TO CACHE ==========
