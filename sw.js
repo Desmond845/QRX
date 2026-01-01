@@ -3,26 +3,27 @@
 // ===========================================
 
 // CHANGE THIS NUMBER EVERY TIME I UPDATE THE APP
-const APP_VERSION = '1.0';
+const APP_VERSION = '1.0.1';
 const CACHE_NAME = `qrx-${APP_VERSION}`;
 
 // ========== FILES TO CACHE ==========
 // Only cache what you need - no images
 const CORE_FILES = [
-  './',           //  index.html (landing page)
-  './index.html', //  cache by name
-  './app.html',   //  main app
-  './style.css',  //  styles
-  './script.js',  //  main JavaScript
-  './manifest.json', // PWA manifest
-  './sw.js'       // This service worker
+  'QRX',   
+          //  index.html (landing page)
+  '/QRX/index.html', //  cache by name
+  '/QRX/app.html',   //  main app
+  '/QRX/style.css',  //  styles
+  '/QRX/script.js',  //  main JavaScript
+  '/QRX/manifest.json', // PWA manifest
+  '/QRX/sw.js'       // This service worker
 ];
 
 // Optional libraries (won't break if missing)
 const OPTIONAL_LIBS = [
-  './qr-code-styling.js',
-  './qr-scanner.umd.min.js',
-  './jsQR.min.js'
+  '/QRX/qr-code-styling.js',
+  '/QRX/qr-scanner.umd.min.js',
+  '/QRX/jsQR.min.js'
 ];
 
 // ========== INSTALL ==========
