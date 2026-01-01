@@ -3,13 +3,13 @@
 // ===========================================
 
 // CHANGE THIS NUMBER EVERY TIME I UPDATE THE APP
-const APP_VERSION = '1.0.1.1';
+const APP_VERSION = '1.0';
 const CACHE_NAME = `qrx-${APP_VERSION}`;
 
 // ========== FILES TO CACHE ==========
 // Only cache what you need - no images
 const CORE_FILES = [
-  'QRX',   
+  '/QRX/',   
           //  index.html (landing page)
   '/QRX/index.html', //  cache by name
   '/QRX/app.html',   //  main app
