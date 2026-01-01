@@ -2,7 +2,8 @@
   "name": "QRX — QR Tools",
   "short_name": "QRX",
   "description": "Generate, scan, decode QR codes with neon cyberpunk aesthetics",
-  "start_url": "/",
+  "start_url": "/QRX/",
+    "scope": "/QRX/",
   "display": "standalone",
   "background_color": "#0a0a0f",
   "theme_color": "#00f0ff",
@@ -21,5 +22,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["utilities", "productivity"]
+  "categories": ["utilities", "productivity"],
+  "prefer_related_applications": false,
+  "related_applications": []
 }
